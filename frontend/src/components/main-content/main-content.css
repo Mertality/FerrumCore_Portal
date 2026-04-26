@@ -1,0 +1,338 @@
+.main-content__section {
+  display: none;
+}
+.main-content__section.active {
+  display: block;
+}
+
+.main-content__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 28px 20px;
+  text-align: center;
+  transition:
+    transform 0.3s var(--ease-smooth),
+    box-shadow 0.3s ease;
+}
+.stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+.stat-card__icon {
+  font-size: 42px;
+  color: var(--accent-blue);
+}
+.stat-card__value {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.stat-card__label {
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
+/* === ТАБЫ (spatial-tabs) === */
+.spatial-tabs {
+  display: flex;
+  gap: 4px;
+  background: var(--glass-dark);
+  backdrop-filter: blur(10px);
+  border-radius: 60px;
+  padding: 4px;
+  margin-bottom: 24px;
+}
+
+.spatial-tab {
+  padding: 10px 24px;
+  background: transparent;
+  border: none;
+  border-radius: 60px;
+  color: var(--text-secondary);
+  font-size: 15px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.spatial-tab.active {
+  background: var(--glass-strong);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.spatial-tab:hover:not(.active) {
+  background: var(--glass-light);
+  color: var(--text-primary);
+}
+
+/* Контент вкладок */
+.settings-tab-content {
+  display: none;
+}
+.settings-tab-content.active {
+  display: block;
+}
+
+/* === ТАБЛИЦА (Spatial) === */
+.spatial-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  margin-top: 20px;
+}
+
+.spatial-table th {
+  text-align: left;
+  padding: 0 16px 8px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.spatial-table td {
+  background: var(--glass-light);
+  backdrop-filter: blur(8px);
+  padding: 14px 16px;
+  color: var(--text-primary);
+  vertical-align: middle;
+}
+
+.spatial-table td:first-child {
+  border-radius: 16px 0 0 16px;
+}
+.spatial-table td:last-child {
+  border-radius: 0 16px 16px 0;
+}
+
+.spatial-table tr:hover td {
+  background: var(--glass-medium);
+  transform: scale(1.01);
+  box-shadow: var(--shadow-sm);
+}
+
+.spatial-table img.employee-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* === МОДАЛЬНОЕ ОКНО === */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal {
+  width: 90%;
+  max-width: 700px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+  background: var(--glass-medium);
+  backdrop-filter: blur(30px);
+  border: 1px solid var(--border-light);
+  border-radius: 40px;
+  box-shadow: var(--shadow-lg);
+  transform: scale(0.95);
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.modal-scroll {
+  overflow-y: auto;
+  max-height: calc(80vh - 24px); /* компенсируем вертикальные margin */
+  padding: 32px;
+  margin: 12px 0; /* отступы сверху и снизу */
+  scrollbar-gutter: stable;
+}
+
+/* Подкорректируем заголовок */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0 24px 0;
+  margin: 0;
+}
+.modal-header h3 {
+  margin: 0;
+  flex: 1;
+}
+
+/* На маленьких экранах уменьшим высоту и отступы */
+@media (max-height: 800px) {
+  .modal-scroll {
+    max-height: calc(70vh - 24px);
+    padding: 24px;
+  }
+}
+.modal-overlay.active .modal {
+  transform: scale(1);
+}
+
+.modal-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  background: var(--glass-dark);
+  border: none;
+  color: var(--text-secondary);
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.modal-close:hover {
+  background: var(--glass-strong);
+  color: white;
+}
+
+/* Форма */
+.form-group {
+  margin-bottom: 16px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+.form-row .form-group {
+  flex: 1;
+}
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+.employees-toolbar {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.spatial-search {
+  flex: 1;
+}
+.spatial-search input {
+  width: 100%;
+}
+.modal-minimize {
+  width: 36px;
+  height: 36px;
+  border-radius: 36px;
+  background: var(--glass-dark);
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 16px;
+}
+.modal-minimize:hover {
+  background: var(--glass-strong);
+  color: white;
+}
+/* Свёрнутая кнопка в футере */
+.minimized-btn {
+  background: var(--accent-blue-glass);
+  border: 1px solid var(--accent-blue);
+  border-radius: 40px;
+  padding: 10px 20px;
+  color: white;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow-sm);
+}
+.minimized-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  background: var(--accent-blue);
+}
+
+/* Анимация сворачивания */
+.modal.minimizing {
+  transform: translateY(150%) scale(0.3);
+  opacity: 0;
+  transition:
+    transform 0.4s ease-in,
+    opacity 0.3s ease-in;
+}
+.modal.restoring {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  transition:
+    transform 0.4s ease-out,
+    opacity 0.3s ease-out;
+}
+/* Секция списка сотрудников — flex-контейнер */
+[data-content="employees"].main-content__section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 16px;
+}
+
+/* Контейнер таблицы с вертикальным скроллом */
+.employees-table-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px; /* чтобы скроллбар не наезжал на края */
+  min-height: 0; /* обязательно для flex-элементов */
+}
+
+/* Таблица внутри обёртки — обычная */
+.employees-table-wrapper .spatial-table {
+  margin-top: 0;
+}
+
+/* Чтобы секции без специального позиционирования не сломались, остальным оставляем как есть */
+.main-content__section {
+  display: none;
+}
+.main-content__section.active {
+  display: block;
+}
+/* Но для секции сотрудников переопределяем display */
+[data-content="employees"].main-content__section.active {
+  display: flex;
+}

@@ -1,0 +1,294 @@
+/* ========== ПОДКЛЮЧЕНИЕ ШРИФТОВ ========== */
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("/assets/fonts/IBM_Plex_Sans/IBMPlexSans-Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("/assets/fonts/IBM_Plex_Sans/IBMPlexSans-Medium.ttf")
+    format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("/assets/fonts/IBM_Plex_Sans/IBMPlexSans-SemiBold.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+/* Если есть Bold, тоже можно добавить */
+
+@font-face {
+  font-family: "Material Symbols Outlined";
+  src: url("/assets/fonts/MaterialSymbolsOutlined.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+/* ========== CSS ПЕРЕМЕННЫЕ (Spatial UI) ========== */
+:root {
+  /* Стекло */
+  --glass-light: rgba(255, 255, 255, 0.08);
+  --glass-medium: rgba(255, 255, 255, 0.12);
+  --glass-strong: rgba(255, 255, 255, 0.2);
+  --glass-dark: rgba(0, 0, 0, 0.25);
+  --glass-deep: rgba(0, 0, 0, 0.4);
+
+  /* Рамки */
+  --border-light: rgba(255, 255, 255, 0.15);
+  --border-medium: rgba(255, 255, 255, 0.25);
+  --border-glow: rgba(0, 122, 255, 0.5);
+
+  /* Текст */
+  --text-primary: rgba(255, 255, 255, 0.92);
+  --text-secondary: rgba(255, 255, 255, 0.65);
+  --text-tertiary: rgba(255, 255, 255, 0.4);
+  --text-inverse: rgba(0, 0, 0, 0.8);
+
+  /* Акценты */
+  --accent-blue: #007aff;
+  --accent-blue-glass: rgba(0, 122, 255, 0.5);
+  --accent-purple: #af52de;
+  --accent-pink: #ff2d55;
+  --accent-green: #34c759;
+  --accent-orange: #ff9f0a;
+
+  /* Тени */
+  --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 15px 35px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 25px 50px rgba(0, 0, 0, 0.3);
+  --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-glow: 0 0 20px rgba(0, 122, 255, 0.3);
+
+  /* Скругления */
+  --radius-md: 20px;
+  --radius-lg: 30px;
+  --radius-xl: 40px;
+
+  /* Анимация */
+  --ease-smooth: cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+/* ========== СБРОС И БАЗА ========== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    "IBM Plex Sans",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background: #0b0b1a url("/assets/images/bg8.jpg") no-repeat center center
+    fixed;
+  background-size: cover;
+  min-height: 100vh;
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+
+
+/* Класс для иконок Material Symbols */
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* по умолчанию */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+}
+
+/* Универсальная стеклянная панель */
+.glass-panel {
+  background: var(--glass-medium);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  padding: 32px 40px;
+  transition: all 0.3s var(--ease-smooth);
+}
+.glass-panel:hover {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: var(--shadow-lg);
+}
+/* ========== SPATIAL UI ЭЛЕМЕНТЫ ========== */
+.spatial-btn {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 100px;
+  padding: 12px 24px;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  line-height: 1;
+}
+.spatial-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.03);
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+.spatial-btn:active {
+  transform: scale(0.98);
+}
+
+.spatial-input,
+input[type="text"].spatial-input,
+input[type="date"].spatial-input,
+input[type="file"].spatial-input,
+select.spatial-select {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: none;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 14px 20px;
+  color: white;
+  font-size: 16px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  outline: none;
+}
+.spatial-input:focus,
+.spatial-select:focus {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.5),
+    0 0 0 2px rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.3);
+}
+.spatial-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+/* Date input */
+input[type="date"].spatial-input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+/* Select */
+.spatial-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  cursor: pointer;
+}
+
+/* ========== СТИЛИЗАЦИЯ ПОЛОСЫ ПРОКРУТКИ ========== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.05);
+}
+/* ========== ФАЙЛОВЫЙ ИНПУТ ========== */
+.file-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.file-input-button {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: none;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 14px 24px;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.file-input-button:hover {
+  background: rgba(0, 0, 0, 0.65);
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.7),
+    0 0 0 2px rgba(255, 255, 255, 0.4);
+}
+
+.file-input-text {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  padding: 14px 20px;
+  color: var(--text-secondary);
+  font-size: 16px;
+  font-family: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: none;
+}
+
+/* Скрываем нативный input */
+.file-input-hidden {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}

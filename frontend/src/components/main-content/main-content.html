@@ -1,0 +1,242 @@
+<section class="main-content__section active" data-content="home">
+  <div class="main-content__stats">
+    <div class="glass-card stat-card">
+      <span class="material-symbols-outlined stat-card__icon">groups</span>
+      <p class="stat-card__value" id="total-employees">0</p>
+      <p class="stat-card__label">Сотрудников</p>
+    </div>
+    <div class="glass-card stat-card">
+      <span class="material-symbols-outlined stat-card__icon">calendar_today</span>
+      <p class="stat-card__value">14</p>
+      <p class="stat-card__label">Событий</p>
+    </div>
+    <div class="glass-card stat-card">
+      <span class="material-symbols-outlined stat-card__icon">check_circle</span>
+      <p class="stat-card__value">98%</p>
+      <p class="stat-card__label">Задач выполнено</p>
+    </div>
+  </div>
+</section>
+
+  <!-- Сотрудники (список) -->
+  <section class="main-content__section" data-content="employees">
+    <div class="employees-toolbar">
+      <div class="spatial-search">
+        <input
+          type="text"
+          id="employee-search"
+          class="spatial-input"
+          placeholder="Поиск сотрудника..."
+        />
+      </div>
+      <button class="spatial-btn" id="add-employee-btn">
+        <span class="material-symbols-outlined">person_add</span>
+        Добавить
+      </button>
+    </div>
+    <div class="employees-table-wrapper">
+      <table class="spatial-table" id="employees-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>ФИО</th>
+            <th>Подразделение</th>
+            <th>Стаж</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Календарь -->
+  <section class="main-content__section" data-content="calendar">
+    <div class="glass-panel">
+      <h3>Календарь событий</h3>
+      <p>Интерактивный календарь появится позже.</p>
+    </div>
+  </section>
+
+  <!-- Настройки -->
+  <section class="main-content__section" data-content="settings">
+    <div class="settings-tabs spatial-tabs">
+      <button class="spatial-tab active" data-tab="employees">
+        Сотрудники
+      </button>
+      <button class="spatial-tab" data-tab="certificates">Удостоверения</button>
+      <button class="spatial-tab" data-tab="methods">Методы контроля</button>
+    </div>
+    <div class="settings-content">
+      <!-- Вкладка Сотрудники -->
+      <div class="settings-tab-content active" data-tab-content="employees">
+        <div class="employees-toolbar">
+          <button class="spatial-btn" id="add-employee-btn">
+            <span class="material-symbols-outlined">person_add</span>
+            Добавить сотрудника
+          </button>
+        </div>
+        <table class="spatial-table" id="employees-table-settings">
+          <thead>
+            <tr>
+              <th></th>
+              <th>ФИО</th>
+              <th>Подразделение</th>
+              <th>Стаж</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <!-- Вкладка Удостоверения -->
+      <div class="settings-tab-content" data-tab-content="certificates">
+        <div class="glass-panel">
+          <h3>Управление удостоверениями</h3>
+          <p>Функционал будет добавлен позже.</p>
+        </div>
+      </div>
+      <!-- Вкладка Методы контроля -->
+      <div class="settings-tab-content" data-tab-content="methods">
+        <div class="glass-panel">
+          <h3>Методы контроля</h3>
+          <p>Настройки доступа и проверок.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Модалка добавления/редактирования -->
+  <div class="modal-overlay" id="employee-modal">
+    <div class="modal glass-panel" id="modal-dialog">
+      <div class="modal-scroll">
+        <div class="modal-header">
+          <h3 id="modal-title">Добавить сотрудника</h3>
+          <button class="modal-minimize" id="modal-minimize" title="Свернуть">
+            <span class="material-symbols-outlined">minimize</span>
+          </button>
+        </div>
+        <form id="employee-form">
+          <div class="form-group">
+            <label>Фамилия</label>
+            <input type="text" name="lastName" required class="spatial-input" />
+          </div>
+          <div class="form-group">
+            <label>Имя</label>
+            <input
+              type="text"
+              name="firstName"
+              required
+              class="spatial-input"
+            />
+          </div>
+          <div class="form-group">
+            <label>Отчество</label>
+            <input type="text" name="middleName" class="spatial-input" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Дата рождения</label>
+              <input
+                type="date"
+                name="birthDate"
+                required
+                class="spatial-input"
+              />
+            </div>
+            <div class="form-group">
+              <label>Дата устройства</label>
+              <input
+                type="date"
+                name="hireDate"
+                required
+                class="spatial-input"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Подразделение</label>
+            <select name="department" class="spatial-select" required>
+              <option value="">Выберите</option>
+              <option value="ИТ">ИТ</option>
+              <option value="Бухгалтерия">Бухгалтерия</option>
+              <option value="Охрана">Охрана</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Телефон рабочий</label>
+              <input type="text" name="workPhone" class="spatial-input" />
+            </div>
+            <div class="form-group">
+              <label>Телефон мобильный</label>
+              <input type="text" name="mobilePhone" class="spatial-input" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Кабинет</label>
+            <input type="text" name="office" class="spatial-input" />
+          </div>
+
+          <div class="form-group">
+            <label>Фото</label>
+            <div class="file-input-wrapper">
+              <button
+                type="button"
+                class="file-input-button"
+                id="photo-trigger"
+              >
+                <span class="material-symbols-outlined">image</span>
+                Выбрать
+              </button>
+              <span class="file-input-text" id="photo-file-name"
+                >Файл не выбран</span
+              >
+              <input
+                type="file"
+                name="photo"
+                accept="image/*"
+                class="file-input-hidden"
+                id="photo-input"
+              />
+            </div>
+            <img
+              id="photo-preview"
+              style="
+                max-width: 150px;
+                display: none;
+                margin-top: 10px;
+                border-radius: 12px;
+              "
+            />
+          </div>
+          <input type="hidden" name="id" />
+          <div class="form-actions">
+            <button type="submit" class="spatial-btn">Сохранить</button>
+            <button type="button" class="spatial-btn" id="modal-cancel">
+              Отмена
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модалка карточки сотрудника (просмотр) -->
+  <div class="modal-overlay" id="employee-detail-modal">
+    <div class="modal glass-panel">
+      <div class="modal-header">
+        <button class="modal-minimize" id="modal-minimize" title="Свернуть">
+          <span class="material-symbols-outlined">minimize</span>
+        </button>
+        <h3 id="detail-modal-title">Карточка сотрудника</h3>
+      </div>
+      <div id="employee-detail-content">
+        <!-- динамически заполняется -->
+      </div>
+      <div class="form-actions" style="margin-top: 20px">
+        <button class="spatial-btn detail-close">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
