@@ -1,24 +1,30 @@
-<section class="main-content__section active" data-content="home">
-  <div class="main-content__stats">
-    <div class="glass-card stat-card">
-      <span class="material-symbols-outlined stat-card__icon">groups</span>
-      <p class="stat-card__value" id="total-employees">0</p>
-      <p class="stat-card__label">Сотрудников</p>
+<div class="main-content">
+  <!-- Главная -->
+  <section class="main-content__section active" data-content="home">
+    <div class="main-content__stats">
+      <div class="glass-card stat-card">
+        <span class="material-symbols-outlined stat-card__icon">groups</span>
+        <p class="stat-card__value" id="total-employees">0</p>
+        <p class="stat-card__label">Сотрудников</p>
+      </div>
+      <div class="glass-card stat-card">
+        <span class="material-symbols-outlined stat-card__icon"
+          >calendar_today</span
+        >
+        <p class="stat-card__value">14</p>
+        <p class="stat-card__label">Событий</p>
+      </div>
+      <div class="glass-card stat-card">
+        <span class="material-symbols-outlined stat-card__icon"
+          >check_circle</span
+        >
+        <p class="stat-card__value">98%</p>
+        <p class="stat-card__label">Задач выполнено</p>
+      </div>
     </div>
-    <div class="glass-card stat-card">
-      <span class="material-symbols-outlined stat-card__icon">calendar_today</span>
-      <p class="stat-card__value">14</p>
-      <p class="stat-card__label">Событий</p>
-    </div>
-    <div class="glass-card stat-card">
-      <span class="material-symbols-outlined stat-card__icon">check_circle</span>
-      <p class="stat-card__value">98%</p>
-      <p class="stat-card__label">Задач выполнено</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-  <!-- Сотрудники (список) -->
+  <!-- Сотрудники -->
   <section class="main-content__section" data-content="employees">
     <div class="employees-toolbar">
       <div class="spatial-search">
@@ -61,42 +67,18 @@
   <!-- Настройки -->
   <section class="main-content__section" data-content="settings">
     <div class="settings-tabs spatial-tabs">
-      <button class="spatial-tab active" data-tab="employees">
-        Сотрудники
+      <button class="spatial-tab active" data-tab="certificates">
+        Удостоверения
       </button>
-      <button class="spatial-tab" data-tab="certificates">Удостоверения</button>
       <button class="spatial-tab" data-tab="methods">Методы контроля</button>
     </div>
     <div class="settings-content">
-      <!-- Вкладка Сотрудники -->
-      <div class="settings-tab-content active" data-tab-content="employees">
-        <div class="employees-toolbar">
-          <button class="spatial-btn" id="add-employee-btn">
-            <span class="material-symbols-outlined">person_add</span>
-            Добавить сотрудника
-          </button>
-        </div>
-        <table class="spatial-table" id="employees-table-settings">
-          <thead>
-            <tr>
-              <th></th>
-              <th>ФИО</th>
-              <th>Подразделение</th>
-              <th>Стаж</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-      <!-- Вкладка Удостоверения -->
-      <div class="settings-tab-content" data-tab-content="certificates">
+      <div class="settings-tab-content active" data-tab-content="certificates">
         <div class="glass-panel">
           <h3>Управление удостоверениями</h3>
           <p>Функционал будет добавлен позже.</p>
         </div>
       </div>
-      <!-- Вкладка Методы контроля -->
       <div class="settings-tab-content" data-tab-content="methods">
         <div class="glass-panel">
           <h3>Методы контроля</h3>
@@ -106,7 +88,7 @@
     </div>
   </section>
 
-  <!-- Модалка добавления/редактирования -->
+  <!-- Модальное окно (общее) -->
   <div class="modal-overlay" id="employee-modal">
     <div class="modal glass-panel" id="modal-dialog">
       <div class="modal-scroll">
@@ -177,7 +159,6 @@
             <label>Кабинет</label>
             <input type="text" name="office" class="spatial-input" />
           </div>
-
           <div class="form-group">
             <label>Фото</label>
             <div class="file-input-wrapper">
@@ -208,6 +189,7 @@
                 margin-top: 10px;
                 border-radius: 12px;
               "
+              alt="Предпросмотр фото"
             />
           </div>
           <input type="hidden" name="id" />
@@ -218,24 +200,6 @@
             </button>
           </div>
         </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Модалка карточки сотрудника (просмотр) -->
-  <div class="modal-overlay" id="employee-detail-modal">
-    <div class="modal glass-panel">
-      <div class="modal-header">
-        <button class="modal-minimize" id="modal-minimize" title="Свернуть">
-          <span class="material-symbols-outlined">minimize</span>
-        </button>
-        <h3 id="detail-modal-title">Карточка сотрудника</h3>
-      </div>
-      <div id="employee-detail-content">
-        <!-- динамически заполняется -->
-      </div>
-      <div class="form-actions" style="margin-top: 20px">
-        <button class="spatial-btn detail-close">Закрыть</button>
       </div>
     </div>
   </div>

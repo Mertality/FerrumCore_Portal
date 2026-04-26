@@ -308,16 +308,19 @@
 [data-content="employees"].main-content__section {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  gap: 16px;
+  height: calc(
+    100vh - 200px
+  ); /* подбери значение под свой экран (хедер+отступы) */
+  overflow: hidden;
 }
 
 /* Контейнер таблицы с вертикальным скроллом */
 .employees-table-wrapper {
   flex: 1;
   overflow-y: auto;
-  padding-right: 4px; /* чтобы скроллбар не наезжал на края */
-  min-height: 0; /* обязательно для flex-элементов */
+  min-height: 0;
+  padding-right: 4px;
+  margin-top: 16px;
 }
 
 /* Таблица внутри обёртки — обычная */
